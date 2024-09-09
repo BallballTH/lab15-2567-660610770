@@ -22,7 +22,7 @@ import {
   Title,
 } from "@mantine/core";
 
-import { Form, useForm, zodResolver } from "@mantine/form";
+import { useForm, zodResolver } from "@mantine/form";
 import { z } from "zod";
 
 const schema = z
@@ -38,16 +38,16 @@ const schema = z
     email: z.string().email({ message: "Invalid email format" }),
 
     plan: z.enum(["funrun", "mini", "half", "full"], {
-      errorMap: (issue, ctx) => ({ message: "Please select a plan" }),
+      errorMap: () => ({ message: "Please select a plan" }),
     }),
 
     gender: z.enum(["male", "female"], {
-      errorMap: (issue, ctx) => ({ message: "Please choose a gender" }),
+      errorMap: () => ({ message: "Please choose a gender" }),
     }),
 
     acceptTermsAndConds: z.literal(true, {
       // message: "You must accept terms and conditions",
-      errorMap: (issue, ctx) => ({
+      errorMap: () => ({
         message: "You must accept terms and conditions",
       }),
     }),
